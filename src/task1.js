@@ -5,12 +5,12 @@ const chessBoard = (x = 2, y = 2, char = '*') => {
     [' ', char]  // even line
   ]
 
-  if (x < 1 || y < 1) {
-    return 'Error: Sizes must be greater than 0'
-  }
-
   if (typeof x !== 'number' || typeof y !== 'number') {
     return 'Error: Sizes must be a number'
+  }
+
+  if (x < 1 || y < 1) {
+    return 'Error: Sizes must be greater than 0'
   }
 
   if (char === ' ') {
