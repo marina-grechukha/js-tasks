@@ -1,10 +1,10 @@
-const chessBoard = (x = 2, y = 2, char = '*') => {
-  let result = ''
-  let chars = [
-    [char, ' '], // odd line
-    [' ', char]  // even line
-  ]
+interface ChessBoardOptions {
+  x: number,
+  y: number,
+  char: string
+}
 
+const validate = ({ x, y, char }: ChessBoardOptions): string => {
   if (typeof x !== 'number' || typeof y !== 'number') {
     return 'Error: Sizes must be a number'
   }
@@ -15,6 +15,22 @@ const chessBoard = (x = 2, y = 2, char = '*') => {
 
   if (char === ' ') {
     return 'Error: Char must not be a space'
+  }
+
+  return ''
+}
+
+const chessBoard = ({ x = 2, y = 2, char = '*' }: ChessBoardOptions) => {
+  let result = ''
+  let chars = [
+    [char, ' '], // odd line
+    [' ', char]  // even line
+  ]
+
+  const error = validate({ x, y, char })
+
+  if (error.length) {
+    return error
   }
 
   for (let lineCount = 0; lineCount < y; lineCount++) {
